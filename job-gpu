@@ -2,17 +2,15 @@
 #SBATCH -A mp309
 #SBATCH -C gpu
 #SBATCH -q regular
-#SBATCH -t 00:10:00
-#SBATCH -N 1
-#SBATCH --ntasks-per-node=1
+#SBATCH -t 00:01:00
+#SBATCH -N 4
+#SBATCH --ntasks-per-node=4
 #SBATCH --gpus-per-task=1
-#SBATCH --cpus-per-task=10
 #SBATCH --gpu-bind=none
-#SBATCH -J nvshmem-test
+#SBATCH -J spgemm
 #SBATCH -o output.%j
 
-module load cuda
+# Load required modules
 module load nvshmem
-
-./spgemm
-# srun -n 8 --gpus-per-task=1 ./spgemm
+# Run the program
+srun -N 4 --ntasks-per-node 4 --gpus-per-task 1 ./build/spgemm /pscratch/sd/z/zihan02/SpGEMM_datasets/matrices/mouse_gene/mouse_gene.mtx

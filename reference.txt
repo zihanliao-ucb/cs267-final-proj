@@ -1,0 +1,19 @@
+High-performance and Memory-saving Sparse General Matrix-Matrix Multiplication for NVIDIA Pascal GPU
+
+spECK: Accelerating GPU Sparse Matrix-Matrix Multiplication through Lightweight Analysis
+
+Optimizing Sparse Matrix—Matrix Multiplication for the GPU
+
+RDMA-Based Algorithms for Sparse Matrix Multiplication on GPUs
+
+A sparsity-aware distributed-memory algorithm for sparse-sparse matrix multiplication
+
+Communication optimal parallel multiplication of sparse random matrices
+
+
+
+
+
+export NVSHMEM_SYMMETRIC_SIZE=8G
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=CC ..
+salloc -A mp309 -N 1 -C gpu -q interactive -t 00:00:30 srun -n 4 --gpus-per-task 1 --gpu-bind=none ./spgemm

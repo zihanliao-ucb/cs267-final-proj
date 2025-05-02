@@ -1,0 +1,6 @@
+build/
+*.out
+*.ex
+output.*
+tmp.*
+main\ copy*.cu
